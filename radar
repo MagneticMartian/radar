@@ -3,18 +3,36 @@
 function region_select(){
     region=$1
     case $region in
+    'guam')
+        reg="GUAM" ;;
     'conus')
-        reg="CONUS-LARGE"
-        ;;
+        reg="CONUS-LARGE" ;;
+    'caribean')
+        reg="CARIB" ;;
+    'alaska')
+        reg="ALASKA" ;;
+    'hawaii')
+        reg="HAWAII" ;;
+    'uppermissvalley')
+        reg="UPPERMISSVLY" ;;
+    'southmissvalley')
+        reg="SOUTHMISSVLY" ;;
+    'southplains')
+        reg="SOUTHPLAINS" ;;
+    'northwest')
+        reg="PACNORTHWEST" ;;
+    'southwest')
+        reg="PACSOUTHWEST" ;;
+    'northrockies')
+        reg="NORTHROCKIES" ;;
+    'southrockies')
+        reg="SOUTHROCKIES" ;;
     'northeast')
-        reg="NORTHEAST"
-        ;;
+        reg="NORTHEAST" ;;
     'southeast')
-        reg="SOUTHEAST"
-        ;;
+        reg="SOUTHEAST" ;;
     'midwest')
-        reg="CENTGRLAKES"
-        ;;
+        reg="CENTGRLAKES" ;;
     *)
         echo Improper region selected
         exit
@@ -27,7 +45,18 @@ region_support(){
     echo '[1] South East'
     echo '[2] North East'
     echo '[3] Mid West'
-    echo '[4] Conus'
+    echo '[4] North Rockies'
+    echo '[5] South Rockies'
+    echo '[6] North West'
+    echo '[7] South West'
+    echo '[8] South Plains'
+    echo '[9] Upper Mississippi Valley'
+    echo '[10] South Mississippi Valley'
+    echo '[11] Alaska'
+    echo '[12] Hawaii'
+    echo '[13] Caribean'
+    echo '[14] Conus'
+    echo '[15] Guam'
 }
 
 echo Which region do you wish to see the radar of?
@@ -36,17 +65,35 @@ read -p "Region Name: " region
 
 case $region in 
     '1')
-        val="southeast"
-        ;;
+        val="southeast" ;;
     '2')
-        val="northeast"
-        ;;
+        val="northeast" ;;
     '3')
-        val="midwest"
-        ;;
+        val="midwest" ;;
     '4')
-        val="conus"
-        ;;
+        val="northrockies" ;;
+    '5')
+        val='southrockies' ;;
+    '6')
+        val="northwest" ;;
+    '7')
+        val="southwest" ;;
+    '8')
+        val="southplains" ;;
+    '9')
+        val="uppermissvalley" ;;
+    '10')
+        val="southmissvalley" ;;
+    '11')
+        val="alaska" ;;
+    '12')
+        val="hawaii" ;;
+    '13')
+        val="caribean" ;;
+    '14')
+        val="conus" ;;
+    '15')
+        val="guam" ;;
     *)
         echo No Region Selected
         exit
