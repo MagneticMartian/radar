@@ -59,7 +59,7 @@ region_support(){
     echo '[15] Guam'
 }
 
-echo Which region do you wish to see the radar of?
+echo 'Which region do you wish to see the radar of?'
 region_support
 read -p "Region Name: " region
 
