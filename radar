@@ -1,0 +1,57 @@
+#!/bin/bash
+
+function region_select(){
+    region=$1
+    case $region in
+    'conus')
+        reg="CONUS-LARGE"
+        ;;
+    'northeast')
+        reg="NORTHEAST"
+        ;;
+    'southeast')
+        reg="SOUTHEAST"
+        ;;
+    'midwest')
+        reg="CENTGRLAKES"
+        ;;
+    *)
+        echo Improper region selected
+        exit
+    esac
+    map="https://radar.weather.gov/ridge/lite/${reg}_loop.gif"
+    echo $map
+}
+
+region_support(){
+    echo '[1] South East'
+    echo '[2] North East'
+    echo '[3] Mid West'
+    echo '[4] Conus'
+}
+
+echo Which region do you wish to see the radar of?
+region_support
+read -p "Region Name: " region
+
+case $region in 
+    '1')
+        val="southeast"
+        ;;
+    '2')
+        val="northeast"
+        ;;
+    '3')
+        val="midwest"
+        ;;
+    '4')
+        val="conus"
+        ;;
+    *)
+        echo No Region Selected
+        exit
+esac
+
+map=$(region_select $val)
+
+mpv --loop=inf ${map}
