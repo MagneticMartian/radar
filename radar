@@ -7,7 +7,7 @@ function region_select(){
         reg="GUAM" ;;
     'conus')
         reg="CONUS-LARGE" ;;
-    'caribean')
+    'caribbean')
         reg="CARIB" ;;
     'alaska')
         reg="ALASKA" ;;
@@ -89,7 +89,7 @@ case $region in
     '12')
         val="hawaii" ;;
     '13')
-        val="caribean" ;;
+        val="caribbean" ;;
     '14')
         val="conus" ;;
     '15')
