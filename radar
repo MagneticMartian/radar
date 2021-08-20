@@ -34,8 +34,7 @@ function region_select(){
     '15')
         reg="GUAM" ;;
     *)
-        echo Improper region selected
-        exit
+        return -1 
     esac
     map="https://radar.weather.gov/ridge/lite/${reg}_loop.gif"
     echo $map
@@ -62,6 +61,11 @@ region_support(){
 echo 'Which region do you wish to see the radar of?'
 region_support
 read -p "Region Name: " region
-
 map=$(region_select $region)
+
+if [ -z $map ]
+then
+    echo Improper regional value
+    exit
+fi
 mpv --loop=inf ${map}
