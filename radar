@@ -3,39 +3,38 @@
 function region_select(){
     region=$1
     case $region in
-    'guam')
-        reg="GUAM" ;;
-    'conus')
-        reg="CONUS-LARGE" ;;
-    'caribbean')
-        reg="CARIB" ;;
-    'alaska')
-        reg="ALASKA" ;;
-    'hawaii')
-        reg="HAWAII" ;;
-    'uppermissvalley')
-        reg="UPPERMISSVLY" ;;
-    'southmissvalley')
-        reg="SOUTHMISSVLY" ;;
-    'southplains')
-        reg="SOUTHPLAINS" ;;
-    'northwest')
-        reg="PACNORTHWEST" ;;
-    'southwest')
-        reg="PACSOUTHWEST" ;;
-    'northrockies')
-        reg="NORTHROCKIES" ;;
-    'southrockies')
-        reg="SOUTHROCKIES" ;;
-    'northeast')
-        reg="NORTHEAST" ;;
-    'southeast')
+    '1')
         reg="SOUTHEAST" ;;
-    'midwest')
+    '2')
+        reg="NORTHEAST" ;;
+    '3')
         reg="CENTGRLAKES" ;;
+    '4')
+        reg="NORTHROCKIES" ;;
+    '5')
+        reg="SOUTHROCKIES" ;;
+    '6')
+        reg="PACNORTHWEST" ;; 
+    '7')
+        reg="PACSOUTHWEST" ;;
+    '8')
+        reg="SOUTHPLAINS" ;;
+    '9')
+        reg="UPPERMISSVLY" ;;
+    '10')
+        reg="SOUTHMISSVLY" ;;
+    '11')
+        reg="ALASKA" ;;
+    '12')
+        reg="HAWAII" ;;
+    '13')
+        reg="CARIB" ;;
+    '14')
+        reg="CONUS-LARGE" ;;
+    '15')
+        reg="GUAM" ;;
     *)
-        echo Improper region selected
-        exit
+        return -1 
     esac
     map="https://radar.weather.gov/ridge/lite/${reg}_loop.gif"
     echo $map
@@ -62,43 +61,11 @@ region_support(){
 echo 'Which region do you wish to see the radar of?'
 region_support
 read -p "Region Name: " region
+map=$(region_select $region)
 
-case $region in 
-    '1')
-        val="southeast" ;;
-    '2')
-        val="northeast" ;;
-    '3')
-        val="midwest" ;;
-    '4')
-        val="northrockies" ;;
-    '5')
-        val='southrockies' ;;
-    '6')
-        val="northwest" ;;
-    '7')
-        val="southwest" ;;
-    '8')
-        val="southplains" ;;
-    '9')
-        val="uppermissvalley" ;;
-    '10')
-        val="southmissvalley" ;;
-    '11')
-        val="alaska" ;;
-    '12')
-        val="hawaii" ;;
-    '13')
-        val="caribbean" ;;
-    '14')
-        val="conus" ;;
-    '15')
-        val="guam" ;;
-    *)
-        echo No Region Selected
-        exit
-esac
-
-map=$(region_select $val)
-
+if [ -z $map ]
+then
+    echo Improper regional value
+    exit
+fi
 mpv --loop=inf ${map}
