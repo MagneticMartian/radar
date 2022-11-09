@@ -36,7 +36,7 @@ function region_select(){
     *)
         return -1 
     esac
-    map="https://radar.weather.gov/ridge/lite/${reg}_loop.gif"
+    map="https://radar.weather.gov/ridge/standard/${reg}_loop.gif"
     echo $map
 }
 
